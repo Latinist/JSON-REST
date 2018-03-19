@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-//@RequestMapping("/rest/user")
+@RequestMapping("/rest")
 public class WebRestController {
 
 
@@ -39,25 +39,56 @@ public class WebRestController {
         return name+" - TEST";
 
             }
+    @PostMapping("/save")
+    public ResponseEntity<?> newRequest(@RequestBody Request request) {
 
+        RequestList result = new RequestList();
+
+        requestService.loadFromFile();
+
+        //requestService.addArticle(request.getFirstName());
+        System.out.println("Write a firstname = " + request.getFirstName());
+        System.out.println("Write a middlename = " + request.getMiddleName());
+        System.out.println("Write a lastname = " + request.getLastName());
+        System.out.println("Write a BirthDay = " + request.getBirthday());
+        System.out.println("Write a Email = " + request.getEmail());
+        //System.out.println("Write an ID = " + request.getId());
+
+
+
+        List<Request> requests =  requestService.findReqs(request);
+       // List<Request> requests = requestService.findByUserNameOrEmail(request.getFirstName());
+
+
+        //return ResponseEntity.ok(result);
+
+        if (requests.isEmpty()) {
+
+            result.setMsg("No user found!");
+            requestService.addArticle(request);
+            requests = requestService.findAll();
+            result.setResult(requests);
+            requestService.saveToFile();
+        } else {
+            result.setMsg("This request is exists");
+            result.setResult(requests);
+        }
+
+        return ResponseEntity.ok(result);
+
+
+
+    }
+
+
+/*
     @PostMapping("/api/search")
-   // public ResponseEntity<Void> create(@RequestBody Request request) {
       public ResponseEntity<?> newRequest(@Valid @RequestBody RequestValidation request, Errors errors) {
 
         System.out.println("Write a username = " + request.getUsername());
 
         requestService.loadFromFile();
 
-   //     LOG.info("Creating request: {}", request);
-
-    /*    if (requestService.exists(fruit)) {
-            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-        }
-
-AjaxResponseBody result = new AjaxResponseBody();
-
-*/
-        //this.validateUser(request);
 
         RequestList result = new RequestList();
 
@@ -78,59 +109,10 @@ AjaxResponseBody result = new AjaxResponseBody();
             result.setResult(requests);
         }
 
-
         return ResponseEntity.ok(result);
 
-
-
-
-
-
-    //public ResponseEntity<?> newRequest(@AuthenticationPrincipal final UserDetails user) {
-   // public ResponseEntity<?> newRequest(@Valid @RequestBody RequestValidation request, Errors errors) {
-    /*    PersonList persons = personDaoServiceImpl.autoCreatePerson();
-        return new ResponseEntity<PersonList>(persons, HttpStatus.OK); */
-
-     //   RequestList requestList = new RequestList();
-
-        //If error, just return a 400 bad request, along with the error message
-    /*    if (errors.hasErrors()) {
-
-            result.setMsg(errors.getAllErrors()
-                    .stream().map(x -> x.getDefaultMessage())
-                    .collect(Collectors.joining(",")));
-
-            return ResponseEntity.badRequest().body(result);
-
-        }
-
-   //     List<Request> requests = reqService.findByUserNameOrEmail(search.getUsername());
-
-
-
-    }
-
-
-
-/*
-            method = RequestMethod.GET,
-            produces = "application/json"
-
-            */
-    /*)
-    public String hi(@RequestParam(value = "name") String name){
-        return name+" - TEST";
-    }
-*/
-
-/*
-    @GetMapping(value="/hello")
-    public String hi(@RequestParam(value = "name") String name){
-    //    return name+" - TEST";
-        return json;
-    }
-*/
-
 }
+
+*/
 }
 

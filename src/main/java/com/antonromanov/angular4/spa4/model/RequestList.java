@@ -1,11 +1,18 @@
 package com.antonromanov.angular4.spa4.model;
 
+
+
+import java.util.Iterator;
 import java.util.List;
 
-public class RequestList {
+public class RequestList{
 
     String msg;
     List<Request> result;
+
+
+
+
 
 
     public String getMsg() {

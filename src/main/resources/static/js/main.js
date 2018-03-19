@@ -11,18 +11,48 @@ $(document).ready(function () {
 
 });
 
+function date_validation() {
+
+    fDate = new Date(); // firstdate
+    cDate = new Date($("#birthday").val()); // date from form
+    lDate = new Date();
+    lDate.setYear(lDate.getFullYear()-120);
+    fDate.setYear(fDate.getFullYear()-18);
+    alert(fDate);
+    alert(cDate);
+    alert(lDate);
+
+
+
+    if(Date.parse(cDate) > Date.parse(lDate) && Date.parse(cDate) < Date.parse(fDate)){
+       // if(Date.parse(cDate) < Date.parse(lDate)){
+        alert("true");
+        return true;
+    }
+
+    alert("false");
+    return false;
+
+}
+
 function fire_ajax_submit() {
 
-    var search = {}
-    search["firstName"] = $("#firstname").val();
-    search["lastname"] = $("#lastname").val();
+    date_validation();
 
+
+    var search = {
+        firstName : $("#firstname").val(),
+        middleName : $("#middlename").val(),
+        lastName :  $("#lastname").val(),
+        birthday :  $("#birthday").val(),
+        email :  $("#email").val()
+}
     $("#btn-search").prop("disabled", true);
 
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "/api/search",
+        url: "/rest/save",
         data: JSON.stringify(search),
         dataType: 'json',
         cache: false,

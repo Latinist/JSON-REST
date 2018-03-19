@@ -33,20 +33,80 @@ public class RequestService {
    /* @Autowired
     private RequestsRepository requestsRepository; */
 
+
+    private Long getLastId() {
+
+        Request request;
+        if (!requests.isEmpty()) {
+            request = requests.get(requests.size() - 1);
+            System.out.println("Id у нас  = " + request.getId());
+            return request.getId();
+        } else {
+            System.out.println("Id у нас ноль");
+            return Long.valueOf(0);
+
+
+        }
+    }
+
+
+
+    public List<Request> findReqs(Request request) {
+
+      //  Boolean result;
+
+      //  result = false;
+   /*
+
+        requests.forEach(item->{
+
+            if(request.equals(item)){
+
+                System.out.println("ПОПАЛИ!!!!!!!!!!!!!!" + item);
+                result = true;
+            }
+        });
+
+        */
+
+        //.filter(x -> x.getFirstName().equalsIgnoreCase(username)).collect(Collectors.toList());
+
+        List<Request> result = requests.stream()
+                .filter(x -> x.getFirstName() != null)
+                .filter(x -> x.equals(request)).collect(Collectors.toList());
+
+
+        result.forEach(item->{
+                System.out.println("ПОПАЛИ!!!!!!!!!!!!!!" + item);
+        });
+
+
+        return result;
+
+
+
+    }
+
+
     public List<Request> findByUserNameOrEmail(String username) {
 
 
         requests.stream().forEach(elem -> System.out.println("findByUserNameOrEmail " + elem.getFirstName()));
-        System.out.println("А Сюда дошли или нет? ");
+
 
       /*  requiredCars = cars.stream()
                 .filter(c -> c.getName() != null)
-                .filter(c -> c.getName().startsWith("M")); */
+                .filter(c -> c.getName().startsWith("M"));
+
+                .filter(x -> x.getFirstName().equalsIgnoreCase(username)).collect(Collectors.toList());
+
+                */
 
         List<Request> result = requests.stream()
                 .filter(x -> x.getFirstName() != null)
                 .filter(x -> x.getFirstName().equalsIgnoreCase(username)).collect(Collectors.toList());
-        System.out.println("Сюда дошли или нет? ");
+
+
 
         return result;
 
@@ -65,12 +125,7 @@ public class RequestService {
 
         try {
 
-
-               mapper.writeValue(new File("d:\\user.json"), requests);
-
-
-
-
+               mapper.writeValue(new File("c:\\GIT\\user.json"), requests);
         } catch (JsonGenerationException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {
@@ -97,7 +152,7 @@ public class RequestService {
                  requests = mapper.reader()
                          .forType(new TypeReference<List<Request>>() {
                          })
-                         .readValue(new FileInputStream("d:\\user.json"));
+                         .readValue(new FileInputStream("c:\\GIT\\user.json"));
 
             } else {
 
@@ -118,6 +173,8 @@ public class RequestService {
         }
 
         //   return requests;
+
+      //  requests.
 
     }
 
@@ -145,12 +202,27 @@ public class RequestService {
         requests.stream().forEach(elem -> System.out.println("in addArticle method " + elem.getFirstName()));
         System.out.println("We are in addArticel ---------> ");
 
-        Request request4 = new Request(3, username, "Borisovich", "Romanov", this.convertStringToDate(), "ar@list.ru");
+        System.out.println("Write an ID = " + this.getLastId());
+
+        Request request4 = new Request(this.getLastId()+1, username, "Borisovich", "Romanov", this.convertStringToDate(), "ar@list.ru");
 
         requests.add(request4);
 
 
         //  return true;
+    }
+
+
+    public void addArticle(Request request) {
+
+        requests.stream().forEach(elem -> System.out.println("in addArticle method " + elem.getFirstName()));
+
+        System.out.println("We are in addArticel Object Version ---------> ");
+        System.out.println("Write an ID = " + this.getLastId());
+
+      //  Request request4 = new Request(this.getLastId()+1, request.getFirstName(), request.getMiddleName(), request.getLastName(), this.convertStringToDate(), request.getEmail());
+        Request request4 = new Request(this.getLastId()+1, request.getFirstName(), request.getMiddleName(), request.getLastName(), request.getBirthday(), request.getEmail());
+        requests.add(request4);
     }
 
 
@@ -176,7 +248,7 @@ public class RequestService {
     private boolean fileCheck() {
 
         Boolean check;
-        File file = new File("d:\\user.json");
+        File file = new File("c:\\GIT\\user.json");
         // File notExist = new File("xyz.txt");
 
         check = false;
