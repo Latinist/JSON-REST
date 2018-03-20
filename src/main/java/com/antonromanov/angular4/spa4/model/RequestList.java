@@ -1,19 +1,12 @@
 package com.antonromanov.angular4.spa4.model;
 
-
-
-import java.util.Iterator;
 import java.util.List;
 
-public class RequestList{
+// Class for response from Server to Client
+public class RequestList {
 
     String msg;
     List<Request> result;
-
-
-
-
-
 
     public String getMsg() {
         return msg;
