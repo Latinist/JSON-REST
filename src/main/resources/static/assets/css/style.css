@@ -1,0 +1,42 @@
+h1{
+    color:red;
+}
+
+.btn.btn-primary {
+    color: white;
+    background-color: cornflowerblue;
+    border-color: cornflowerblue;
+    width: 100%;
+    font-size: large;
+}
+
+
+
+.modal-header {
+    background-color: crimson;
+    color:white;
+}
+
+
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+}
+
+
+.btn-default {
+    border-color: #E85757;
+    background-color: #FDA2A2;
+    color:#F00;
+    width: 50%;
+
+}
+
+.close:hover { border-color: #FC0D0D; background-color: #D20606; }
+
+.modal-dialog {
+
+    width: 360px;
+
+}

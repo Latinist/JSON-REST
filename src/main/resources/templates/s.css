@@ -1,0 +1,14 @@
+h1{
+    color:red;
+}
+
+
+.close { border-color: #E85757; background-color: #FDA2A2; color:#F00;}
+
+.close:hover { border-color: #FC0D0D; background-color: #D20606; }
+
+.btn.btn-primary {
+    color: #f00;
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+}
