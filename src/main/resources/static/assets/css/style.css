@@ -10,27 +10,21 @@ h1{
     font-size: large;
 }
 
-
-
 .modal-header {
     background-color: crimson;
     color:white;
 }
-
-
 
 .modal-footer {
     display: flex;
     justify-content: center;
 }
 
-
 .btn-default {
     border-color: #E85757;
     background-color: #FDA2A2;
     color:#F00;
     width: 50%;
-
 }
 
 .close:hover { border-color: #FC0D0D; background-color: #D20606; }
@@ -38,5 +32,4 @@ h1{
 .modal-dialog {
 
     width: 360px;
-
 }
