@@ -16,26 +16,16 @@ import {HttpService} from "./http.service";
 })
 export class AppComponent {
   title = 'app';
-  req: Request=new Request(); // данные вводимого пользователя
+  req: Request=new Request();
 
-
-  minDate = new Date(); // firstdate
+  // Min-max date for entered Date validation
+  minDate = new Date();
   maxDate = new Date();
 
-
-
-//  minDate.setYear(maxDate.getFullYear()-120);
-  //maxDate.setYear(maxDate.getFullYear()-18);
-
-  //minDate = new Date();
-  //maxDate = new Date(2020, 0, 1);
-
-  receivedReq: Request; // полученный пользователь
+  receivedReq: Request; // recieved request
   done: boolean = false;
 
-
   public authForm: FormGroup;
-
 
   constructor(private httpService: HttpService) {
 
@@ -53,44 +43,24 @@ export class AppComponent {
     });
   }
   submit(req: Request) {
-  //if(user.name !='') {
-    if(this.authForm.valid) {
+
+
     this.httpService.postData(req)
       .subscribe(
         (data: Request) => {
           this.receivedReq = data;
           this.done = true;
           console.log("Server Response");
-          console.log(this.receivedReq.firstName);
+          console.log(this.receivedReq);
         },
         error => console.log(error)
       );
-  } else {alert("Пиздец!")}
-
   }
 
-  public openModal() {
-    console.log(this.authForm);
-
-    //minDate = new Date(); // firstdate
-
-  //  this.minDate = new Date(); // firstdate
- //   minDate.setYear(maxDate.getFullYear()-120);
-
-  }
 
   public DateSet() {
-
-// this.minDate = new Date(); // firstdate
-    //this.minDate.setYear(maxDate.getFullYear()-120);
     this.minDate.setFullYear(this.minDate.getFullYear()-120)
     this.maxDate.setFullYear(this.maxDate.getFullYear()-18)
-
-
-
-    console.log(this.minDate);
-    console.log(this.maxDate);
-
   }
 
   public save() {
