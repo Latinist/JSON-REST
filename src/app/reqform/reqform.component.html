@@ -1,0 +1,37 @@
+<div ng-app="reqform">
+
+  <form firstName="saveTemplateData" action="#" ng-controller="FormCtrl" ng-submit="submitForm()">
+
+    First firstName:    <br/><input type="text" ng-model="form.firstname">    <br/><br/>
+    Email Address: <br/><input type="text" ng-model="form.emailaddress"> <br/><br/>
+
+    <br/><br/>
+
+    <!-- <button ng-click="save()" >Save</button> -->
+    <input type="submit" ngClick="Submit" >
+
+  </form>
+
+  <!-- Login form -->
+  <form>
+    <p class="h5 text-center mb-4">Sign in</p>
+
+    <div class="md-form">
+      <i class="fa fa-envelope prefix grey-text"></i>
+      <input type="text" id="defaultForm-email" class="form-control" mdbActive>
+      <label for="defaultForm-email">Your email</label>
+    </div>
+
+    <div class="md-form">
+      <i class="fa fa-lock prefix grey-text"></i>
+      <input type="password" id="defaultForm-pass" class="form-control" mdbActive>
+      <label for="defaultForm-pass">Your password</label>
+    </div>
+
+    <div class="text-center">
+      <button class="btn btn-default waves-light" mdbRippleRadius>Login</button>
+    </div>
+  </form>
+  <!-- Login form -->
+
+</div>

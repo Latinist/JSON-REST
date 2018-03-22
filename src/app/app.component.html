@@ -1,0 +1,54 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<header>
+  <div class="container clearfix">
+    <h1 id="logo">
+      Request Manager
+    </h1>
+
+    Enter your Request:
+  </div>
+</header>
+
+
+
+<div class="content">
+  <form [formGroup]="authForm">
+    <div class="form-group">
+      <div class="inputElem">
+      <mat-form-field class="width-50">
+        <input matInput formControlName="firstName" [(ngModel)]="req.firstName" required placeholder="First Name">
+      </mat-form-field>
+        </div>
+      <div class="inputElem">
+      <mat-form-field class="width-50">
+        <input matInput formControlName="middleName" [(ngModel)]="req.middleName" required placeholder="Middle Name">
+      </mat-form-field>
+      </div>
+        <div class="inputElem">
+      <mat-form-field class="width-50">
+        <input matInput formControlName="lastName" [(ngModel)]="req.lastName" required placeholder="Last Name">
+      </mat-form-field>
+        </div>
+          <div class="inputElem">
+      <mat-form-field class="width-50">
+
+        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="birthday" [(ngModel)]="req.birthday" required placeholder="Birthday">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+      </mat-form-field>
+          </div>
+            <div class="inputElem">
+            <mat-form-field  class="width-50">
+        <input matInput formControlName="email" [(ngModel)]="req.email" required placeholder="Email">
+      </mat-form-field>
+            </div>
+      <button mat-raised-button color="primary" (click)="submit(req)" [disabled]="!authForm.valid">Сохранить</button>
+    </div>
+  </form>
+
+</div>
+<hr>
+
+
