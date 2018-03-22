@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,13 +21,12 @@ import java.util.stream.Collectors;
 @Service
 public class RequestService {
 
+    ObjectMapper mapper = new ObjectMapper(); //we need mapper to marshalize collection to json
     @Value("${file.name}") // setting filename from application.properties
     private String filename;
-
-    ObjectMapper mapper = new ObjectMapper(); //we need mapper to marshalize collection to json
     private List<Request> requests;
 
-  // method for autoincrement id
+    // method for autoincrement id
     public Long getLastId() {
 
         Request request;

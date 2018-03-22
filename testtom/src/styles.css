@@ -1,5 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
 * {
   padding: 0;
   margin: 0;
@@ -13,36 +13,18 @@ header {
   padding: 1em 2%;
   background: #2c3e50;
   color: #fff;
-
 }
 
 mat-form-field.width-50 {
-
   width: 80%;
-
 }
 
-
 div.content {
-
- /* border-style: solid;
-
-  border-color: red; */
-
   padding: 30px;
-
-
 }
 
 div.form-group {
-
- /* border-style: solid;
-  border-width: thick;
-  border-color: green; */
   margin: 0 auto;
   width: 50%;
   text-align: center;
-
-
-
 }

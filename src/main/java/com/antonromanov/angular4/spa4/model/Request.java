@@ -14,12 +14,9 @@ public class Request {
     private Date birthday;
     private String email;
 
-    public Request(){
+    public Request() {
     }
 
-    private void incID() {
-        this.id = count.incrementAndGet();
-    }
     public Request(Long id, String firstName, String middleName, String lastName, Date birthday, String email) {
 
         this.id = id;
@@ -28,6 +25,10 @@ public class Request {
         this.lastName = lastName;
         this.birthday = birthday;
         this.email = email;
+    }
+
+    private void incID() {
+        this.id = count.incrementAndGet();
     }
 
     public long getId() {
@@ -87,7 +88,7 @@ public class Request {
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
-        return (int)result;
+        return (int) result;
     }
 
     @Override

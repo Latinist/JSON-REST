@@ -1,10 +1,6 @@
-# JSON REST CLIENT-SERVER SERVICE WITH ANGULAR CLI
+# JSON REST TEST PROJECT
 
-Rest-service for read data from ANGULAR form by HTTP-POST request and read/write it to .json file. I used here also Material Design and Moment JS.
-
-____
-
-### This is PRE-FINAL Version
+Rest-service for read data from HTML-form by HTTP-POST request and read/write it to .json file
 
 ____
 
@@ -12,4 +8,6 @@ This is '*two-step-from-final-release*' version.
 
 ## To Do
 
-1. Clear code-style
+1. Finalize Data-validation function with message alert
+2. Clear code-style
+3. (may be) Create Angular-version
