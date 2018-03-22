@@ -1,13 +1,20 @@
-# JSON REST TEST PROJECT
+# JSON REST SERVICE [HTML JS VERSION]
 
-Rest-service for read data from HTML-form by HTTP-POST request and read/write it to .json file
+Rest-service for read data from Angular form by HTTP-POST request and read/write it to .json file. 
+
+____
+*I used here classic HTML5 + CSS + JS
 
 ____
 
-This is '*two-step-from-final-release*' version. 
 
-## To Do
+Run/Install application:
+```
+mvn spring-boot:run
+```
+and open: http://localhost:8080
 
-1. Finalize Data-validation function with message alert
-2. Clear code-style
-3. (may be) Create Angular-version
+
+### Screenshot
+![screenshot](image-html.png)
+
